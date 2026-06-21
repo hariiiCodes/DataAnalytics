@@ -11,13 +11,13 @@ def main():                                            #DECLARED MAIN FUNCTION F
         choice = input("Enter choice: ")
 
         if choice == "1":                              
-           # add_student()                             #COMMENTED FOR LATER USE.     
+           # addStudent()                             #COMMENTED FOR LATER USE.     
            print("1")
         elif choice == "2":
-           # view_students()                           #COMMENTED FOR LATER USE. 
+           # viewStudents()                           #COMMENTED FOR LATER USE. 
            print("2")
         elif choice == "3":
-           # class_report()                            #COMMENTED FOR LATER USE.
+           # classReport()                            #COMMENTED FOR LATER USE.
             print("3")
         elif choice == "4":
             print("Program Ended")
@@ -28,21 +28,21 @@ def main():                                            #DECLARED MAIN FUNCTION F
 main()
 
 
-# def add_student():
-#     name = input("Enter the name of student: ")
-#     scores = []
+# def addStudent():
+#     name=input("Enter the name of student: ")
+#     scores=[]
 #     while True:
-#         score = input("Enter score (or 'done'): ")
-#         if score.lower() == "done":
+#         score=input("Enter score (or 'done'): ")
+#         if score.lower()=="done":
 #             break
-#         score = float(score)
-#         if 0 <= score <= 100:
+#         score=float(score)
+#         if 0<=score<=100:
 #             scores.append(score)
 #         else:
 #             print("Score must be between 0 and 100")
 
-#     average = calculate_average(scores)
-#     grade = get_letter_grade(average)
+#     average = calcAverage(scores)
+#     grade = getGrade(average)
 
 #     student = {
 #         "name": name,
@@ -57,19 +57,21 @@ main()
 #     print(f"Average: {average:.2f}")
 #     print(f"Grade: {grade}")
 
-# def calculate_average(scores):
+# def calcAverage(scores):
 #     if len(scores) == 0:
 #         return 0
 #     return sum(scores) / len(scores)
 
 # def get_letter_grade(avg):
-#     if avg >= 90:
+#     if avg >=90:
 #         return "A"
-#     elif avg >= 80:
+#     elif avg >=80:
 #         return "B"
-#     elif avg >= 70:
+#     elif avg >=70:
 #         return "C"
-#     elif avg >= 60:
+#     elif avg >=60:
 #         return "D"
 #     else:
-#         return "F"
+#         return "F"                                
+
+                                #WILL SORT AND ORDER THE FUNCTIONS LATER.
