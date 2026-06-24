@@ -6,24 +6,21 @@ from streamlit_folium import st_folium
 from geopy.geocoders import Nominatim
 from mappings import city_map, state_map, state_city_map
 
-# =========================
+
 # PAGE CONFIG
-# =========================
 st.set_page_config(
     page_title="American Housing Price Predictor",
-    page_icon="🏠",
+    page_icon=" ",
     layout="wide"
 )
 
-# =========================
+
 # SESSION STATE
-# =========================
 if "prediction" not in st.session_state:
     st.session_state.prediction = None
 
-# =========================
+
 # CSS
-# =========================
 st.markdown("""
 <style>
 .stApp {
@@ -80,14 +77,13 @@ section[data-testid="stSidebar"] {
 </style>
 """, unsafe_allow_html=True)
 
-# =========================
+
 # LOAD MODEL
-# =========================
 model = joblib.load("housing_model.pkl")
 
-# =========================
+
 # GEOCODER
-# =========================
+
 @st.cache_data
 def get_coordinates(city, state):
     geolocator = Nominatim(user_agent="housing_app")
@@ -96,9 +92,8 @@ def get_coordinates(city, state):
         return location.latitude, location.longitude
     return None, None
 
-# =========================
+
 # HEADER
-# =========================
 st.markdown("""
 <div class="project-header">
     <div class="project-title">American Housing Price Prediction</div>
@@ -110,9 +105,8 @@ st.markdown("""
 
 st.image("img.jpeg", use_container_width=True)
 
-# =========================
+
 # SIDEBAR INPUTS
-# =========================
 st.sidebar.header("Property Inputs")
 
 beds = st.sidebar.slider("Beds", 1, 20, 3)
@@ -155,20 +149,19 @@ longitude = st.sidebar.slider(
     -180.0, 180.0, -118.0, 0.01
 )
 
-# =========================
+
 # PROPERTY DETAILS
-# =========================
 col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("Property Details")
     st.markdown(f"""
     <div class="property-card">
-        🛏 Beds: <b>{beds}</b><br>
-        🛁 Baths: <b>{baths}</b><br>
-        🏡 Living Space: <b>{living_space} sq ft</b><br>
-        🌆 City: <b>{selected_city_name}</b><br>
-        🗺 State: <b>{selected_state_name}</b>
+         Beds: <b>{beds}</b><br>
+         Baths: <b>{baths}</b><br>
+         Living Space: <b>{living_space} sq ft</b><br>
+         City: <b>{selected_city_name}</b><br>
+         State: <b>{selected_state_name}</b>
     </div>
     """, unsafe_allow_html=True)
 
@@ -176,17 +169,16 @@ with col2:
     st.subheader("Economic Details")
     st.markdown(f"""
     <div class="property-card">
-        📌 Zip Density: <b>{zip_density}</b><br>
-        💰 Median Income: <b>${median_income:,.0f}</b><br>
-        🌍 Longitude: <b>{longitude}</b>
+         Zip Density: <b>{zip_density}</b><br>
+         Median Income: <b>${median_income:,.0f}</b><br>
+         Longitude: <b>{longitude}</b>
     </div>
     """, unsafe_allow_html=True)
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-# =========================
+
 # CENTERED BUTTON
-# =========================
 left_col, center_col, right_col = st.columns([1, 2, 1])
 
 predict_clicked = False
@@ -221,9 +213,8 @@ if predict_clicked:
     prediction = model.predict(input_df)[0]
     st.session_state.prediction = prediction
 
-# =========================
+
 # OUTPUT
-# =========================
 if st.session_state.prediction is not None:
     prediction = st.session_state.prediction
 
@@ -252,7 +243,7 @@ if st.session_state.prediction is not None:
     """, unsafe_allow_html=True)
 
     st.markdown("---")
-    st.subheader("🗺 Property Location")
+    st.subheader("Property Location")
 
     latitude, real_longitude = get_coordinates(
         selected_city_name,
